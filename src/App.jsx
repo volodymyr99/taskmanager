@@ -1,35 +1,81 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import Body from './components/Body';
 import { BoardContext } from './context/BoardContext';
+import FunctionsProvider from './context/FunctionsContext';
+import data from './data.json'; // Імпортуємо JSON-файл напряму
 
 function App() {
     const [allboard, setAllBoard] = useState(null);
 
     useEffect(() => {
-        // Перевіряємо наявність даних у sessionStorage
-        const savedData = sessionStorage.getItem('boardData');
+        const storedData = sessionStorage.getItem('boardData');
 
-        if (savedData) {
-            // Якщо дані є, встановлюємо їх у state
-            setAllBoard(JSON.parse(savedData));
+        if (storedData) {
+            // Використовуємо дані з sessionStorage
+            setAllBoard(JSON.parse(storedData));
         } else {
-            // Якщо даних немає, можна завантажити їх з файлу або API
-            console.error('Data not found in sessionStorage');
+            // Зберігаємо дані в sessionStorage
+            sessionStorage.setItem('boardData', JSON.stringify(data));
+            setAllBoard(data);
         }
     }, []);
 
     if (!allboard) {
-        return <div>Loading...</div>;
+        return <div>Loading...</div>; // Покажемо "Loading..." до ініціалізації даних
     }
 
     return (
-        <BoardContext.Provider value={{ allboard, setAllBoard }}>
-            <div className="App">
-                <Body />
-            </div>
-        </BoardContext.Provider>
+        <FunctionsProvider>
+            <BoardContext.Provider value={{ allboard, setAllBoard }}>
+                <div className="App">
+                    <Body />
+                </div>
+            </BoardContext.Provider>
+        </FunctionsProvider>
     );
 }
 
 export default App;
+
+
+{/*import { useEffect, useState } from 'react';
+import './App.css';
+import Body from './components/Body';
+import { BoardContext } from './context/BoardContext';
+import FunctionsProvider from './context/FunctionsContext';
+import data from './data.json'; // Імпортуємо JSON-файл напряму
+
+function App() {
+    const [boardData, setBoardData] = useState(null);
+
+    useEffect(() => {
+        const storedData = sessionStorage.getItem('boardData');
+
+        if (storedData) {
+            // Використовуємо дані з sessionStorage
+            setBoardData(JSON.parse(storedData));
+        } else {
+            // Зберігаємо дані в sessionStorage
+            sessionStorage.setItem('boardData', JSON.stringify(data));
+            setBoardData(data);
+        }
+    }, []);
+
+    if (!boardData) {
+        return <div>Loading...</div>; // Покажемо "Loading..." до ініціалізації даних
+    }
+
+    return (
+        <FunctionsProvider>
+            <BoardContext.Provider value={{ boardData, setBoardData }}>
+                <div className="App">
+                    <Body />
+                </div>
+            </BoardContext.Provider>
+        </FunctionsProvider>
+    );
+}
+
+export default App;
+*/}
