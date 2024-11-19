@@ -1,0 +1,56 @@
+{
+  "name": "����� 2",
+  "bgcolor": "#153",
+  "manager": {
+    "id": "e1",
+    "name": "John Doe"
+  },
+  "list": [
+    {
+      "id": "1",
+      "title": "To do",
+      "items": [
+        {
+          "id": "cdrFt",
+          "title": "Project Description 1",
+          "deadline": "2024-12-01",
+          "assignee": {
+            "id": "e1",
+            "name": "John Doe"
+          }
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "In Progress",
+      "items": [
+        {
+          "id": "cdrFv",
+          "title": "Project Description 2",
+          "deadline": "2024-11-25",
+          "assignee": {
+            "id": "e2",
+            "name": "Jane Doe"
+          }
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Done",
+      "items": [
+        {
+          "id": "cdrFb",
+          "title": "Project Description 3",
+          "deadline": null,
+          "assignee": {
+            "id": null,
+            "name": null
+          }
+        }
+      ]
+    }
+  ]
+}
+	],

@@ -1,0 +1,78 @@
+﻿{
+  "active": 0,
+  "boards": [
+    {
+      "name": "Дошка 1",
+      "bgcolor": "#069",
+      "manager": {
+        "id": "1",
+        "name": "Петренко Петро"
+
+      },
+      "list": [
+        {
+          "id": "1",
+          "title": "To Do",
+          "items": [
+            {
+              "id": "c1",
+              "title": "c1 description",
+              "deadline": "2024-12-01",
+              "assignee": {
+                "id": "2",
+                "name": "Жук Марина"
+              }
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "In Progress",
+          "items": [
+            {
+              "id": "c3",
+              "title": "Project Description 2",
+              "deadline": "2024-11-25",
+              "assignee": {
+                "id": "2",
+                "name": "Жук Марина"
+              }
+            },
+            {
+              "id": "c4",
+              "title": "PD 4",
+              "deadline": "2024-11-25",
+              "assignee": {
+                "id": "2",
+                "name": "Жук Марина"
+              }
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "Done",
+          "items": [
+            {
+              "id": "c3",
+              "title": "c3 description3",
+              "deadline": null,
+              "assignee": {
+                "id": null,
+                "name": null
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "Петренко Петро",
+      "email": "petro@q.com",
+      "password": "Ppp12345"
+    } 
+  ]
+}
