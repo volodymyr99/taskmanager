@@ -1,10 +1,10 @@
 ﻿import React, { useContext } from 'react';
 import { BoardContext } from '../context/BoardContext';
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import AddList from './AddList';
-import Utils from '../utils/Utils';
 import AddCard from './AddCard';
-import { FiEdit2, FiMoreHorizontal, FiUserPlus } from 'react-icons/fi';
+import Card from './Card'; // Імпорт нового компонента
+import { FiMoreHorizontal, FiUserPlus } from 'react-icons/fi';
 
 const Main = () => {
     const { allboard, setAllBoard } = useContext(BoardContext);
@@ -30,14 +30,6 @@ const Main = () => {
         if (!deadline) return null;
         const date = new Date(deadline);
         return date.toLocaleDateString('uk-UA', { day: '2-digit', month: '2-digit' });
-    };
-
-    const isDeadlineApproaching = (deadline) => {
-        if (!deadline) return false;
-        const now = new Date();
-        const deadlineDate = new Date(deadline);
-        const diff = (deadlineDate - now) / (1000 * 60 * 60 * 24); // різниця в днях
-        return diff <= 2; // менше або рівно двох днів
     };
 
     const Utils = {
@@ -83,32 +75,13 @@ const Main = () => {
                                                 {...provided.droppableProps}
                                             >
                                                 {x.items && x.items.map((item, index) => (
-                                                    <Draggable key={item.id} draggableId={item.id} index={index}>
-                                                        {(provided) => (
-                                                            <div
-                                                                ref={provided.innerRef}
-                                                                {...provided.draggableProps}
-                                                                {...provided.dragHandleProps}
-                                                                className={`item flex flex-col items-start bg-zinc-700 p-2 mb-2 rounded-md border transition duration-200 ${
-        item.deadline && Utils.isDeadlineClose(item.deadline) ? 'border-red-500' : 'border-zinc-900'}`}                                                                
-                                                            >
-                                                                <span className="font-bold">{item.title}</span>
-                                                                {item.deadline && (
-                                                                    <span className="text-xs text-gray-400">
-                                                                        {`Термін до: ${formatDeadline(item.deadline)}`}
-                                                                    </span>
-                                                                )}
-                                                                {item.assignee.name && (
-                                                                    <span className="text-xs text-gray-400">{`Виконавець: ${item.assignee.name}`}</span>
-                                                                )}
-                                                                <span className='flex justify-start items-start'>
-                                                                    <button className='hover:bg-gray-600 p-1 rounded-sm'>
-                                                                        <FiEdit2 size={16} />
-                                                                    </button>
-                                                                </span>
-                                                            </div>
-                                                        )}
-                                                    </Draggable>
+                                                    <Card
+                                                        key={item.id}
+                                                        item={item}
+                                                        index={index}
+                                                        formatDeadline={formatDeadline}
+                                                        Utils={Utils}
+                                                    />
                                                 ))}
                                                 {provided.placeholder}
                                             </div>
