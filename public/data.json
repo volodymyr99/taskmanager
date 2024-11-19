@@ -2,7 +2,7 @@
 	"active": 0,
 	"boards": [
 		{
-			"name": "Дошка 1",
+			"name": "Маркетинговий план",
 			"bgcolor": "#069",
 			"manager": {
 				"id": "1",
@@ -16,11 +16,20 @@
 					"items": [
 						{
 							"id": "c1",
-							"title": "c1 description",
+							"title": "Повідомити клієнтів",
 							"deadline": "2024-12-01",
 							"assignee": {
 								"id": "2",
 								"name": "Жук Марина"
+							}
+						},
+						{
+							"id": "c11",
+							"title": "Чернетка сторінки продукту",
+							"deadline": "2024-12-01",
+							"assignee": {
+								"id": "4",
+								"name": "Іненко Інна"
 							}
 						}
 					]
@@ -31,7 +40,7 @@
 					"items": [
 						{
 							"id": "cdrFv",
-							"title": "Project Description 2",
+							"title": "План запуску Product Hunt",
 							"deadline": "2024-11-20",
 							"assignee": {
 								"id": "2",
@@ -84,6 +93,12 @@
 			"id": "3",
 			"name": "Івченко Сергій",
 			"email": "iva@q.com",
+			"password": "Iii12345"
+		},
+		{
+			"id": "4",
+			"name": "Іненко Інна",
+			"email": "inen@q.com",
 			"password": "Iii12345"
 		}
 	]
