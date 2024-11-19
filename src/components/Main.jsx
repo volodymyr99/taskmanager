@@ -8,9 +8,13 @@ const Main = () => {
     const { allboard, setAllBoard } = useContext(BoardContext);
     const bdata = allboard.boards[allboard.active];
 
+    // Оновлюємо sessionStorage після кожної зміни стану
     useEffect(() => {
-        // Ініціалізація стану після першого рендеру
-    }, [allboard]);
+        // Перевіряємо, чи є зміни в allboard
+        if (allboard) {
+            sessionStorage.setItem('boardData', JSON.stringify(allboard));
+        }
+    }, [allboard]);  // Цей useEffect спрацьовує кожного разу, коли allboard змінюється
 
     const formatDeadline = (deadline) => {
         if (!deadline) return null;

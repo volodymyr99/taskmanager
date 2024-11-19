@@ -11,7 +11,7 @@ const Body = () => {
         { path: "/browse",
           element: <Browse />
         },
-        { path: "/participants", // Маршрут для учасників
+        { path: "/participants", 
           element: <Participants />
         },
     ]);

@@ -1,0 +1,105 @@
+{
+	"active": 0,
+	"boards": [
+		{
+			"name": "Маркетинговий план",
+			"bgcolor": "#069",
+			"manager": {
+				"id": "1",
+				"name": "Петренко Петро"
+
+			},
+			"list": [
+				{
+					"id": "1",
+					"title": "To Do",
+					"items": [
+						{
+							"id": "11",
+							"title": "Повідомити клієнтів",
+							"deadline": "2024-12-01",
+							"assignee": {
+								"id": "2",
+								"name": "Жук Марина"
+							}
+						},
+						{
+							"id": "12",
+							"title": "Чернетка сторінки продукту",
+							"deadline": "2024-12-01",
+							"assignee": {
+								"id": "4",
+								"name": "Іненко Інна"
+							}
+						}
+					]
+				},
+				{
+					"id": "2",
+					"title": "In Progress",
+					"items": [
+						{
+							"id": "21",
+							"title": "План запуску Product Hunt",
+							"deadline": "2024-11-20",
+							"assignee": {
+								"id": "2",
+								"name": "Жук Марина"
+							}
+						},
+						{
+							"id": "22",
+							"title": "PD 4",
+							"deadline": "2024-11-25",
+							"assignee": {
+								"id": "3",
+								"name": "Івченко Сергій"
+							}
+						}
+					]
+				},
+				{
+					"id": "3",
+					"title": "Done",
+					"items": [
+						{
+							"id": "31",
+							"title": "c3 description3",
+							"deadline": null,
+							"assignee": {
+								"id": null,
+								"name": null
+							}
+						}
+					]
+				}
+			]
+		}
+	],
+	"users": [
+		{
+			"id": "1",
+			"name": "Петренко Петро",
+			"email": "petro@q.com",
+			"password": "Ppp12345"
+		},
+		{
+			"id": "2",
+			"name": "Жук Марина",
+			"email": "zhuk@q.com",
+			"password": "Zhu12345"
+		},
+		{
+			"id": "3",
+			"name": "Івченко Сергій",
+			"email": "iva@q.com",
+			"password": "Iii12345"
+		},
+		{
+			"id": "4",
+			"name": "Іненко Інна",
+			"email": "inen@q.com",
+			"password": "Iii12345"
+		}
+	]
+}
