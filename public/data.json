@@ -15,7 +15,7 @@
 					"title": "To Do",
 					"items": [
 						{
-							"id": "c1",
+							"id": "11",
 							"title": "Повідомити клієнтів",
 							"deadline": "2024-12-01",
 							"assignee": {
@@ -24,7 +24,7 @@
 							}
 						},
 						{
-							"id": "c11",
+							"id": "12",
 							"title": "Чернетка сторінки продукту",
 							"deadline": "2024-12-01",
 							"assignee": {
@@ -39,7 +39,7 @@
 					"title": "In Progress",
 					"items": [
 						{
-							"id": "cdrFv",
+							"id": "21",
 							"title": "План запуску Product Hunt",
 							"deadline": "2024-11-20",
 							"assignee": {
@@ -48,7 +48,7 @@
 							}
 						},
 						{
-							"id": "c4",
+							"id": "22",
 							"title": "PD 4",
 							"deadline": "2024-11-25",
 							"assignee": {
@@ -63,7 +63,7 @@
 					"title": "Done",
 					"items": [
 						{
-							"id": "c3",
+							"id": "31",
 							"title": "c3 description3",
 							"deadline": null,
 							"assignee": {

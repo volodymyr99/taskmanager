@@ -1,0 +1,19 @@
+/*  урсор "рука" дл€ DragDropContext */
+.droppable-container {
+    cursor: grab;
+}
+
+    /*  урсор "кожен елемент в процес≥ перет€гуванн€" */
+    .droppable-container:active {
+        cursor: grabbing;
+    }
+
+/* ƒл€ елемент≥в, €к≥ можна перет€гнути */
+.draggable-element {
+    cursor: grab;
+}
+
+    /*  урсор на елемент≥, що перет€гуЇтьс€ */
+    .draggable-element:active {
+        cursor: grabbing;
+    }
