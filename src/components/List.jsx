@@ -1,43 +1,45 @@
 ﻿import React from 'react';
-import { Draggable, Droppable } from 'react-beautiful-dnd';
-import { FiMoreHorizontal } from 'react-icons/fi';
-import Card from './Card';
-import AddCard from './AddCard';
+import { Draggable, Droppable } from 'react-beautiful-dnd'; // Додаємо імпорт Droppable
+import { FiEdit2 } from 'react-icons/fi';
 
-const List = ({ list, formatDeadline, isDeadlineClose, getCard }) => {
+const List = ({ list, index }) => {
     return (
-        <div className="mr-3 w-60 h-fit rounded-md p-2 bg-black flex-shrink-0">
-            <div className="list-body">
-                <div className="flex justify-between p-1">
-                    <span className="text-gray-300 font-bold">{list.title}</span>
-                    <button className="hover:bg-gray-500 p-1 rounded-sm">
-                        {/* Додайте потрібну іконку або функціонал */}
-                    </button>
+        <Droppable droppableId={list.id} direction="vertical">
+            {(provided) => (
+                <div
+                    className="flex flex-col"
+                    ref={provided.innerRef}
+                    {...provided.droppableProps}
+                >
+                    <h3 className="text-gray-300">{list.title}</h3>
+                    {list.items?.map((item, index) => (
+                        <Draggable key={item.id} draggableId={item.id} index={index}>
+                            {(provided) => (
+                                <div
+                                    ref={provided.innerRef}
+                                    {...provided.draggableProps}
+                                    {...provided.dragHandleProps}
+                                    className={`item flex flex-col items-start bg-zinc-700 p-2 mb-2 rounded-md border transition duration-200 ${item.deadline ? 'border-red-500' : 'border-zinc-900'}`}
+                                >
+                                    <span className="font-bold">{item.title}</span>
+                                    {item.deadline && (
+                                        <span className="text-xs text-gray-400">
+                                            {`Термін до: ${item.deadline}`}
+                                        </span>
+                                    )}
+                                    <span className="flex justify-start items-start">
+                                        <button className="hover:bg-gray-600 p-1 rounded-sm">
+                                            <FiEdit2 size={16} />
+                                        </button>
+                                    </span>
+                                </div>
+                            )}
+                        </Draggable>
+                    ))}
+                    {provided.placeholder}
                 </div>
-                <Droppable droppableId={list.id?.toString() || ''}>
-                    {(provided, snapshot) => (
-                        <div
-                            className="py-1"
-                            ref={provided.innerRef}
-                            style={{ backgroundColor: snapshot.isDraggingOver ? '#222' : 'transparent' }}
-                            {...provided.droppableProps}
-                        >
-                            {list.items?.map((item, index) => (
-                                <Card
-                                    key={item.id}
-                                    item={item}
-                                    index={index}
-                                    formatDeadline={formatDeadline}
-                                    isDeadlineClose={isDeadlineClose}
-                                />
-                            ))}
-                            {provided.placeholder}
-                        </div>
-                    )}
-                </Droppable>
-                <AddCard getcard={(card) => getCard(card, list.id)} />
-            </div>
-        </div>
+            )}
+        </Droppable>
     );
 };
 
