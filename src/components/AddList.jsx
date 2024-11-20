@@ -60,7 +60,7 @@ const AddList = ({ getlist }) => {
                     onClick={() => setShow(true)}
                     className="flex p-1 w-full justify-center rounded items-center mt-1 bg-gray-300 hover:bg-gray-500 h-8"
                 >
-                    <BiPlus size={16}></BiPlus> Add a list
+                    <BiPlus size={16}></BiPlus> Додати список
                 </button>
             )}
         </div>

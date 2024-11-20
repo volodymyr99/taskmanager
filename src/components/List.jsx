@@ -1,9 +1,24 @@
 ﻿import React from 'react';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
 import Card from './Card'; // Імпортуємо Card
+import AddCard from './AddCard'; // Імпортуємо AddCard
 import { FiEdit2 } from 'react-icons/fi';
 
 const List = ({ list, index, formatDeadline, isDeadlineClose, getCard }) => {
+    // Функція обробки додавання нової картки
+    const handleAddCard = (newCard) => {
+        const updatedItems = [
+            ...list.items,
+            {
+                id: Date.now().toString(), // Генеруємо унікальний id
+                title: newCard.title,
+                deadline: newCard.deadline,
+                assignee: newCard.assignee,
+            },
+        ];
+        getCard(list.id, updatedItems); // Передаємо id списку та оновлений масив карток
+    };
+
     return (
         <Droppable droppableId={list.id} direction="vertical">
             {(provided) => (
@@ -43,6 +58,8 @@ const List = ({ list, index, formatDeadline, isDeadlineClose, getCard }) => {
                         </Draggable>
                     ))}
                     {provided.placeholder}
+                    {/* Компонент додавання картки */}
+                    <AddCard onAddCard={handleAddCard} />
                 </div>
             )}
         </Droppable>

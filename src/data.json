@@ -49,8 +49,8 @@
 						},
 						{
 							"id": "22",
-							"title": "PD 4",
-							"deadline": "2024-11-25",
+							"title": "Дослідження ринку",
+							"deadline": "2024-11-30",
 							"assignee": {
 								"id": "3",
 								"name": "Івченко Сергій"
@@ -64,11 +64,11 @@
 					"items": [
 						{
 							"id": "31",
-							"title": "c3 description3",
-							"deadline": null,
+							"title": "Аналіз вимог замовника",
+							"deadline": "2024-11-28",
 							"assignee": {
-								"id": null,
-								"name": null
+								"id": "1",
+								"name": "Петренко Петро"
 							}
 						}
 					]

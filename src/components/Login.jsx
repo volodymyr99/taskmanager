@@ -34,31 +34,24 @@ const Login = () => {
                 <div className="flex justify-center items-center">
                     <img src={trello} alt="logo" className="w-[36%] py-8 " /></div>
 
-                <p className="text-center font-semibold">{sign? "Log in to continue" : "Sign up to continue"}</p>
+                <p className="text-center font-semibold">Авторизуйтесь для входу</p>
 
-                {!sign && <input type="text" placeholder="Enter your name"   className="p-2 m-2 rounded-sm border border-2"/>}  
-                <input type="email" ref={email} placeholder="Enter your email"   className="p-2 m-2 rounded-sm border border-2"/>
-                <input type="password" ref={password} placeholder="Enter your password" className="p-2 m-2 rounded-sm border border-2" />
+                
+                <input type="email" ref={email} placeholder="Введіть email"   className="p-2 m-2 rounded-sm border border-2"/>
+                <input type="password" ref={password} placeholder="Введіть пароль" className="p-2 m-2 rounded-sm border border-2" />
                 
                 <p className="text-red-600 text-sm px-2">{err}</p>
                 
                 <button onClick={handleValidate}
-                className="bg-blue-600 text-white p-2 m-2 rounded-sm">{sign? "Continue" : "Sign up"}</button>
+                className="bg-blue-600 text-white p-2 m-2 rounded-sm">Вхід</button>
                
-                <p className="text-xs text-slate-400 px-2 cursor-pointer ">{sign? "" : "By signing up, I accept the Atlassian Cloud Terms of Service and acknowledge the Privacy Policy."}</p>
-
-                <p onClick={handleToggle}
-                 className="text-blue-700 text-center text-sm py-4 cursor-pointer">{sign? "Can't log in? • Create an account" : "Already have an Atlassian account? Log in"}</p>
+                
                 
                 <hr className=" m-2 py-2"/>
                 
-                <div className="flex justify-center items-center py-2">
-                    <img src={at} alt="logo" className="w-[36%] p-2 bg-slate-400 " /></div>
-                    <p className="text-xs text-center py-2">One account for Trello, Jira, Confluence and more.</p>
-                    <p className="text-xs text-center py-2">{sign?"Privacy Policy • User Notice":""}</p>
-                    <p className="text-xs text-center cursor-pointer">This site is protected by reCAPTCHA and the Google Privacy</p>
-                    <p className="text-xs text-center cursor-pointer pb-8">Policy and Terms of Service apply.</p>
-
+                
+                    
+                    
                 
             </form>
         </div>

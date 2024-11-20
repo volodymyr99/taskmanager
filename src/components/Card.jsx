@@ -1,8 +1,13 @@
-﻿import React from 'react';
+﻿import React, { useContext } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import { FiEdit2 } from 'react-icons/fi';
+import { FunctionsContext } from '../context/FunctionsContext';
 
-const Card = ({ item, index, formatDeadline, isDeadlineClose }) => {
+const Card = ({ item, index }) => {
+    const { formatDeadline, isDeadlineClose } = useContext(FunctionsContext);
+
+    console.log("Item:", item); // Дебаг інформації про картку
+
     return (
         <Draggable key={item.id} draggableId={item.id} index={index}>
             {(provided) => (

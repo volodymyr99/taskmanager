@@ -8,21 +8,17 @@ const AddCard = (props) => {
     const [show, setShow] = useState(false);
     const [users, setUsers] = useState([]); // Додано для збереження користувачів
 
-    // Завантаження даних із data.json
+    // Завантаження даних із sessionStorage
     useEffect(() => {
-        fetch('/data.json')
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then((data) => {
+        const storedData = sessionStorage.getItem('boardData');
+        if (storedData) {
+            try {
+                const data = JSON.parse(storedData);
                 setUsers(data.users || []); // Зберігаємо список користувачів
-            })
-            .catch((error) => {
-                console.error('Помилка завантаження data.json:', error);
-            });
+            } catch (error) {
+                console.error('Помилка парсингу даних із sessionStorage:', error);
+            }
+        }
     }, []);
 
     const saveCard = () => {

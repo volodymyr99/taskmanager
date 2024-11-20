@@ -4,31 +4,34 @@ import Header from './Header';
 import Sidebar from './SideBar';
 
 const Participants = () => {
-    const { allboard } = useContext(BoardContext); // Використання useContext для отримання значень
+    const { allboard } = useContext(BoardContext); // Отримуємо всі дошки з контексту
     const [participants, setParticipants] = useState([]);
     const [newParticipant, setNewParticipant] = useState('');
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('/data.json');
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await response.json();
-                setParticipants(data.users || []); // Завантажуємо учасників з файлу
-            } catch (error) {
-                console.error('Error fetching participants:', error);
-            }
-        };
-
-        fetchData();
+        const storedBoardData = sessionStorage.getItem('boardData'); // Отримуємо дані з sessionStorage
+        if (storedBoardData) {
+            const parsedData = JSON.parse(storedBoardData); // Парсимо отримані дані
+            setParticipants(parsedData.users || []); // Якщо в даних є поле users, то ми їх використовуємо
+        } else {
+            console.log("Немає даних в sessionStorage для boardData");
+        }
     }, []);
 
     const handleAddParticipant = () => {
         if (newParticipant) {
-            setParticipants([...participants, { id: Date.now(), name: newParticipant }]);
-            setNewParticipant('');
+            const newParticipantData = { id: Date.now().toString(), name: newParticipant };
+            const updatedParticipants = [...participants, newParticipantData];
+            setParticipants(updatedParticipants);
+        
+            // Оновлюємо дані в sessionStorage
+            const storedBoardData = sessionStorage.getItem('boardData');
+            if (storedBoardData) {
+                const parsedData = JSON.parse(storedBoardData);
+                parsedData.users = updatedParticipants; // Оновлюємо список учасників
+                sessionStorage.setItem('boardData', JSON.stringify(parsedData)); // Зберігаємо оновлені дані
+            }
+            setNewParticipant(''); // Очищаємо поле введення
         }
     };
 
@@ -39,6 +42,15 @@ const Participants = () => {
                 <Sidebar />
                 <div className='participants-container'>
                     <h2>Учасники</h2>
+                    <ul>
+                        {participants.length > 0 ? (
+                            participants.map(participant => (
+                                <li key={participant.id}>{participant.name}</li>
+                            ))
+                        ) : (
+                            <p>Немає учасників</p>
+                        )}
+                    </ul>
                     <input 
                         type="text" 
                         value={newParticipant} 
@@ -46,11 +58,7 @@ const Participants = () => {
                         placeholder="Додати нового учасника" 
                     />
                     <button onClick={handleAddParticipant}>Додати</button>
-                    <ul>
-                        {participants.map(participant => (
-                            <li key={participant.id}>{participant.name}</li>
-                        ))}
-                    </ul>
+
                 </div>
             </div>
         </>
