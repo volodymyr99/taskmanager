@@ -21,10 +21,11 @@ function App() {
         }
     }, []);
 
+    {/* }
     if (!allboard) {
-        return <div>Loading...</div>; // Покажемо "Loading..." до ініціалізації даних
+        return <div>Loading...</div>; 
     }
-
+    */}
     return (
         <FunctionsProvider>
             <BoardContext.Provider value={{ allboard, setAllBoard }}>

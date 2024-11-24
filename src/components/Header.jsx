@@ -1,5 +1,5 @@
 ﻿import { Link } from "react-router-dom"
-import trello from "..//assets/trello-logo.svg"
+import trello from "..//assets/trello-logo.png"
 const Header = () => {
   return (
     <div className="  w-100 h-12 p-5 bg-slate-900 flex flex-row justify-between text-gray-300">

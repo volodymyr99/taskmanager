@@ -17,7 +17,7 @@ const Sidebar = () => {
 
     // Перевірка наявності allboard перед доступом до boards
     if (!allboard || !allboard.boards) {
-        return null; // Або ви можете повернути спінер завантаження
+        return null; 
     }
 
     const setActiveboard = (i) => {
@@ -94,7 +94,7 @@ const Sidebar = () => {
                         ))}
                     </ul>
 
-                    {/* Додано меню "Учасники" */}
+                    {/* Учасники */}
                     <div className='flex justify-between items-center px-3 py-2'>
                         <h6 className="text-white">Учасники</h6>
                         <Link to="/participants" className='hover:bg-slate-600 bg-slate-300 p-2 rounded-sm'>

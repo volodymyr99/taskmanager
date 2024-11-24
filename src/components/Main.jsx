@@ -7,14 +7,12 @@ import AddList from './AddList';
 const Main = () => {
     const { allboard, setAllBoard } = useContext(BoardContext);
     const bdata = allboard.boards[allboard.active];
-
-    // Оновлюємо sessionStorage після кожної зміни стану
-    useEffect(() => {
-        // Перевіряємо, чи є зміни в allboard
+        
+    useEffect(() => {    
         if (allboard) {
             sessionStorage.setItem('boardData', JSON.stringify(allboard));
         }
-    }, [allboard]);  // Цей useEffect спрацьовує кожного разу, коли allboard змінюється
+    }, [allboard]);  
 
     const formatDeadline = (deadline) => {
         if (!deadline) return null;
@@ -27,7 +25,7 @@ const Main = () => {
         const now = new Date();
         const deadlineDate = new Date(deadline);
         const diff = (deadlineDate - now) / (1000 * 60 * 60 * 24);
-        return diff <= 2; // менше або рівно двох днів
+        return diff <= 2;
     };
 
     const onDragEnd = (result) => {
@@ -40,13 +38,11 @@ const Main = () => {
 
         const sourceListIndex = newList.findIndex((list) => list.id === source.droppableId);
         const destinationListIndex = newList.findIndex((list) => list.id === destination.droppableId);
-
-        // Якщо перетягування в один і той самий список на ту ж саму позицію
+                
         if (sourceListIndex === destinationListIndex && source.index === destination.index) {
             return;
         }
-
-        // Переміщуємо картку із одного списку в інший
+                
         const [removed] = newList[sourceListIndex].items.splice(source.index, 1);
         newList[destinationListIndex].items.splice(destination.index, 0, removed);
 

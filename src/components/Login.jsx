@@ -1,5 +1,4 @@
-import trello from "..//assets/trello-logo.svg"
-import at from "..//assets/atlassian.png"
+import trello from "..//assets/trello-logo.png"
 import { useRef, useState } from "react"
 import { valid } from "./Validate"
 import { useNavigate } from "react-router-dom"
@@ -14,53 +13,35 @@ const Login = () => {
     const handleToggle = () => {
         setSign(!sign)
     }
+
     const handleValidate = () => {
         const msg = valid(email.current.value, password.current.value)
         setErr(msg);
-        if(msg) return
+        if (msg) return
 
         navigate("/browse")
     }
 
-  return (
-    <div className="container grid grid-cols-3 min-h-[700px] md:gap-36">
-        <div className="flex justify-end items-end">
-            <img src="https://id-frontend.prod-east.frontend.public.atl-paas.net/assets/trello-left.4f52d13c.svg" alt="leftimg" />
-        </div>
+    return (
+        <div className="flex items-center justify-center min-h-screen bg-gray-100"> {/* Центруємо контейнер */}
+            <form onSubmit={(e) => e.preventDefault()} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 my-24 shadow-lg hover:shadow-xl px-8 py-6 bg-white rounded-lg max-w-md">
+                <div className="flex justify-center items-center mb-4 col-span-1 md:col-span-2 lg:col-span-4"> {/* Логотип займає всю ширину */}
+                    <img src={trello} alt="logo" className="w-[50%]" />
+                </div>
 
-        <div>
-            <form onSubmit={(e) => e.preventDefault()} className="grid grid-cols my-24 shadow-lg hover:shadow-xl px-8">
+                <p className="text-center font-semibold col-span-1 md:col-span-2 lg:col-span-4">Авторизуйтесь для входу</p>
 
-                <div className="flex justify-center items-center">
-                    <img src={trello} alt="logo" className="w-[36%] py-8 " /></div>
+                <input type="email" ref={email} placeholder="Введіть email" className="p-2 m-2 rounded-sm border border-gray-300 col-span-1 md:col-span-2 lg:col-span-4" />
+                <input type="password" ref={password} placeholder="Введіть пароль" className="p-2 m-2 rounded-sm border border-gray-300 col-span-1 md:col-span-2 lg:col-span-4" />
 
-                <p className="text-center font-semibold">Авторизуйтесь для входу</p>
+                <p className="text-red-600 text-sm px-2 col-span-1 md:col-span-2 lg:col-span-4">{err}</p>
 
-                
-                <input type="email" ref={email} placeholder="Введіть email"   className="p-2 m-2 rounded-sm border border-2"/>
-                <input type="password" ref={password} placeholder="Введіть пароль" className="p-2 m-2 rounded-sm border border-2" />
-                
-                <p className="text-red-600 text-sm px-2">{err}</p>
-                
-                <button onClick={handleValidate}
-                className="bg-blue-600 text-white p-2 m-2 rounded-sm">Вхід</button>
-               
-                
-                
-                <hr className=" m-2 py-2"/>
-                
-                
-                    
-                    
-                
+                <button onClick={handleValidate} className="bg-blue-600 text-white p-2 m-2 rounded-sm col-span-1 md:col-span-2 lg:col-span-4">Вхід</button>
+
+                <hr className="m-2 py-2 col-span-1 md:col-span-2 lg:col-span-4" />
             </form>
         </div>
-
-        <div className="flex justify-end items-end">
-            <img src="https://id-frontend.prod-east.frontend.public.atl-paas.net/assets/trello-right.e6e102c7.svg" alt="rightimg" />
-        </div>
-    </div>
-  )
+    )
 }
 
 export default Login
